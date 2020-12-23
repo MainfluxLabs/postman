@@ -1,0 +1,5991 @@
+{
+	"info": {
+		"_postman_id": "d466b151-0503-40dd-994b-ad4909687ff6",
+		"name": "Ashvin",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Users",
+			"item": [
+				{
+					"name": "User authentication",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"email\": \"<email>\",\n    \"password\": \"<password>\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/tokens",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"tokens"
+							]
+						},
+						"description": "Generates an access token when provided with proper credentials."
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"labore laborum Lorem et\"\n}"
+						},
+						{
+							"name": "User authenticated.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"token\": \"Excepteur labore exercitation\"\n}"
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"labore laborum Lorem et\"\n}"
+						},
+						{
+							"name": "Failed due to using invalid credentials.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/tokens",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"tokens"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"error\": \"labore laborum Lorem et\"\n}"
+						}
+					]
+				},
+				{
+					"name": "User password change endpoint",
+					"request": {
+						"auth": {
+							"type": "bearer"
+						},
+						"method": "PATCH",
+						"header": [
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							},
+							{
+								"key": "Authorization",
+								"value": "{{userToken}}",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"password\": \"2geo4stationary\",\n    \"old_password\": \"12345678\"\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/password",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"password"
+							]
+						},
+						"description": "When authenticated user wants to change password.\n"
+					},
+					"response": [
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"password"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"password"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "User link .",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"password"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "PATCH",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/password",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"password"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Things",
+			"item": [
+				{
+					"name": "Adds new thing",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"key\": \"2A-D9-64-68-5A-9F\",\n    \"name\": \"borer temperature sensor\",\n    \"metadata\": {\n        \"min heat\": 15,\n        \"max heat\": 55\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/things",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things"
+							]
+						},
+						"description": "Adds new thing to the list of things owned by user identified using\nthe provided access token.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing registered.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Entity already exist.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves things",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/things?limit=10&offset=0&dir=desc",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "Name filter. Filtering is performed as a case-insensitive partial match.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "id",
+									"description": "Order type.",
+									"disabled": true
+								},
+								{
+									"key": "dir",
+									"value": "desc",
+									"description": "Order direction."
+								},
+								{
+									"key": "metadata",
+									"value": "<object>",
+									"description": "Metadata filter. Filtering is performed matching the parameter with metadata on top level. Parameter is json.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves a list of managed things. Due to performance concerns, data\nis retrieved in subsets. The API things must ensure that the entire\ndataset is consumed either by making subsequent requests, or by\nincreasing the subset size of the initial request.\n"
+					},
+					"response": [
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"things\": [\n  {\n   \"id\": \"et culpa voluptate\",\n   \"key\": \"labore Lorem dolore\",\n   \"name\": \"do aliqua\",\n   \"metadata\": \"consectetur adipisicing occaecat Ut Exc\"\n  },\n  {\n   \"id\": \"officia ad id\",\n   \"key\": \"labore in eli\",\n   \"name\": \"nisi labore sit\",\n   \"metadata\": \"enim eiusmod\"\n  }\n ],\n \"total\": -35383772,\n \"offset\": -75863850,\n \"limit\": -78183432\n}"
+						},
+						{
+							"name": "A non-existent entity request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"anim\""
+						}
+					]
+				},
+				{
+					"name": "Retrieves thing info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/things/:thingId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things",
+								":thingId"
+							],
+							"variable": [
+								{
+									"key": "thingId",
+									"value": "{{thingID}}"
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"dolore quis id culpa\",\n \"key\": \"occaecat et voluptate commodo\",\n \"name\": \"culpa fugiat in in\",\n \"metadata\": \"cupidatat tempor incididunt est\"\n}"
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing does not exist.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Updates thing info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"borer temperature sensor 2\",\n    \"metadata\": {\n        \"min heat\": 15,\n        \"max heat\": 55\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/things/:thingId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things",
+								":thingId"
+							],
+							"variable": [
+								{
+									"key": "thingId",
+									"value": "{{thingID}}",
+									"description": "(Required) Unique thing identifier."
+								}
+							]
+						},
+						"description": "Update is performed by replacing the current resource data with values\nprovided in a request payload. Note that the thing's type and ID\ncannot be changed.\n"
+					},
+					"response": [
+						{
+							"name": "Thing updated.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing does not exist.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Removes a thing",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/things/{{thingID}}",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things",
+								"{{thingID}}"
+							]
+						},
+						"description": "Removes a thing. The service will ensure that the removed thing is\ndisconnected from all of the existing channels.\n"
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed thing's ID.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Thing removed.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Channels",
+			"item": [
+				{
+					"name": "Creates new channel",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"borer\",\n    \"metadata\": {\n        \"manufacturer\": \"Best Machines Co.\",\n        \"year\": \"2001\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/channels",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels"
+							]
+						},
+						"description": "Creates new channel. User identified by the provided access token will\nbe the channel's owner.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Entity already exist.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Channel created.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves channels",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels?limit=10&offset=0&order=id",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "Name filter. Filtering is performed as a case-insensitive partial match.",
+									"disabled": true
+								},
+								{
+									"key": "order",
+									"value": "id",
+									"description": "Order type."
+								},
+								{
+									"key": "dir",
+									"value": "desc",
+									"description": "Order direction.",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "<object>",
+									"description": "Metadata filter. Filtering is performed matching the parameter with metadata on top level. Parameter is json.",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves a list of managed channels. Due to performance concerns, data\nis retrieved in subsets. The API things must ensure that the entire\ndataset is consumed either by making subsequent requests, or by\nincreasing the subset size of the initial request.\n"
+					},
+					"response": [
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"channels\": [\n  {\n   \"id\": \"cupidatat commodo\",\n   \"name\": \"ex tempor ad est\",\n   \"metadata\": \"dolor do aliqua\"\n  },\n  {\n   \"id\": \"laborum et sint laboris sed\",\n   \"name\": \"et\",\n   \"metadata\": \"pariatur reprehenderit sunt\"\n  }\n ],\n \"total\": 95329594,\n \"offset\": 38421219,\n \"limit\": -93427683\n}"
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels?limit=10&offset=0&name=<string>&order=id&dir=desc&metadata=<object>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "order",
+											"value": "id"
+										},
+										{
+											"key": "dir",
+											"value": "desc"
+										},
+										{
+											"key": "metadata",
+											"value": "<object>"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves channel info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId"
+							],
+							"variable": [
+								{
+									"key": "chanId",
+									"value": "{{chanID}}",
+									"description": "(Required) Unique channel identifier."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Channel does not exist.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"id\": \"culpa reprehenderit consequat ea\",\n \"name\": \"sed fugiat\",\n \"metadata\": \"aliqua\"\n}"
+						},
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed channel's ID.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Updates channel info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"borer 2\",\n    \"metadata\": {\n        \"manufacturer\": \"Best Machines Co.\",\n        \"year\": \"2001\"\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId"
+							],
+							"variable": [
+								{
+									"key": "chanId",
+									"value": "{{chanID}}",
+									"description": "(Required) Unique channel identifier."
+								}
+							]
+						},
+						"description": "Update is performed by replacing the current resource data with values\nprovided in a request payload. Note that the channel's ID will not be\naffected.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Channel does not exist.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Channel updated.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Removes a channel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId"
+							],
+							"variable": [
+								{
+									"key": "chanId",
+									"value": "{{chanID}}",
+									"description": "(Required) Unique channel identifier."
+								}
+							]
+						},
+						"description": "Removes a channel. The service will ensure that the subscribed apps and\nthings are unsubscribed from the removed channel.\n"
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed channel's ID.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Channel removed.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Things-Channels",
+			"item": [
+				{
+					"name": "List of channels connected to specified thing",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{userToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"things",
+								":thingId",
+								"channels"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "connected",
+									"value": "true",
+									"description": "Connection state of the subset to retrieve."
+								}
+							],
+							"variable": [
+								{
+									"key": "thingId",
+									"value": "{{thingID}}",
+									"description": "(Required) Unique thing identifier."
+								}
+							]
+						},
+						"description": "Retrieves list of channels connected to specified thing with pagination metadata.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing does not exist.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/things/:thingId/channels?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"things",
+										":thingId",
+										"channels"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"channels\": [\n  {\n   \"id\": \"cupidatat commodo\",\n   \"name\": \"ex tempor ad est\",\n   \"metadata\": \"dolor do aliqua\"\n  },\n  {\n   \"id\": \"laborum et sint laboris sed\",\n   \"name\": \"et\",\n   \"metadata\": \"pariatur reprehenderit sunt\"\n  }\n ],\n \"total\": 95329594,\n \"offset\": 38421219,\n \"limit\": -93427683\n}"
+						}
+					]
+				},
+				{
+					"name": "List of things connected to specified channel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{userToken}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId",
+								"things"
+							],
+							"query": [
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								},
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "connected",
+									"value": "true",
+									"description": "Connection state of the subset to retrieve."
+								}
+							],
+							"variable": [
+								{
+									"description": "(Required) Unique channel identifier.",
+									"key": "chanId",
+									"value": "{{chanID}}"
+								}
+							]
+						},
+						"description": "Retrieves list of things connected to specified channel with pagination metadata.\n"
+					},
+					"response": [
+						{
+							"name": "A non-existent entity request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						},
+						{
+							"name": "Database can't process request.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Unprocessable Entity (WebDAV) (RFC 4918)",
+							"code": 422,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"things\": [\n  {\n   \"id\": \"ex\",\n   \"key\": \"laboris ipsum sint\",\n   \"name\": \"id ullamco deserunt elit fugiat\",\n   \"metadata\": \"amet sunt in\"\n  },\n  {\n   \"id\": \"dolore nulla labore\",\n   \"key\": \"et\",\n   \"name\": \"Duis do\",\n   \"metadata\": \"exercitation magna consectetur\"\n  }\n ],\n \"total\": -41857346,\n \"offset\": 35026039,\n \"limit\": 21034070\n}"
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things?offset=0&limit=10&connected=true",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things"
+									],
+									"query": [
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "connected",
+											"value": "true"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Connects thing and channel.",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"channel_ids\": [\n        \"de4007e2-858e-4ffd-b1f9-5ad9c0f5608d\",\n        \"6e6201f6-bd3f-4d70-9bd7-5c4122405277\"\n    ],\n    \"thing_ids\": [\n        \"08b2044b-b8ec-4986-8b24-1571b9034898\",\n        \"b6ad1abe-bae0-4c06-9f42-c85a583bdfad\"\n    ]\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/connect",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"connect"
+							]
+						},
+						"description": "Connect things specified by IDs to channels specified by IDs.\nChannel and thing are owned by user identified using the provided access token.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "A non-existent entity request.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Entity already exist.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Conflict",
+							"code": 409,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing registered.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/connect",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"connect"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"est ess\""
+						}
+					]
+				},
+				{
+					"name": "Connects the thing to the channel",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId",
+								"things",
+								":thingId"
+							],
+							"variable": [
+								{
+									"key": "chanId",
+									"value": "{{chanConID}}",
+									"description": "(Required) Unique channel identifier."
+								},
+								{
+									"key": "thingId",
+									"value": "{{thingConID}}",
+									"description": "(Required) Unique thing identifier."
+								}
+							]
+						},
+						"description": "Creates connection between a thing and a channel. Once connected to\nthe channel, things are allowed to exchange messages through it.\n"
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"anim\""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Thing connected.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Channel or thing does not exist.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Disconnects the thing from the channel",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"channels",
+								":chanId",
+								"things",
+								":thingId"
+							],
+							"variable": [
+								{
+									"key": "chanId",
+									"value": "{{chanConID}}",
+									"description": "(Required) Unique channel identifier."
+								},
+								{
+									"key": "thingId",
+									"value": "{{thingConID}}",
+									"description": "(Required) Unique thing identifier."
+								}
+							]
+						},
+						"description": "Removes connection between a thing and a channel. Once connection is\nremoved, thing can no longer exchange messages through the channel.\n"
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Unauthorized",
+							"code": 401,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Channel or thing does not exist.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "\"fugiat ipsum\""
+						},
+						{
+							"name": "Thing disconnected.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<uuid>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/things/:thingId",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"things",
+										":thingId"
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										},
+										{
+											"key": "thingId"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Twins",
+			"item": [
+				{
+					"name": "Adds new twin",
+					"request": {
+						"method": "POST",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Borer\",\n    \"definition\": {\n        \"delta\": 100,\n        \"attributes\": [\n            {\n                \"name\": \"temperature\",\n                \"channel\": \"{{chanID}}\",\n                \"subtopic\": \"temperature\",\n                \"persist_state\": false\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/twins",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"twins"
+							]
+						},
+						"description": "Adds new twin to the list of twins owned by user identified using\nthe provided access token.\n"
+					},
+					"response": [
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Created twin's relative URL (i.e. /twins/{twinID}).",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									]
+								}
+							},
+							"status": "Created",
+							"code": 201,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Location",
+									"value": "",
+									"description": ""
+								},
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed JSON.",
+							"originalRequest": {
+								"method": "POST",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves twins",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/twins?limit=10&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"twins"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								},
+								{
+									"key": "name",
+									"value": "<string>",
+									"description": "Twin name",
+									"disabled": true
+								},
+								{
+									"key": "metadata",
+									"value": "<string>",
+									"description": "Metadata filter. Filtering is performed matching the parameter with\nmetadata on top level. Parameter is json.\n",
+									"disabled": true
+								}
+							]
+						},
+						"description": "Retrieves a list of managed twins. Due to performance concerns, data\nis retrieved in subsets.\n"
+					},
+					"response": [
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins?limit=10&offset=0&name=<string>&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"twins\": [\n  {\n   \"owner\": \"eu in\",\n   \"id\": \"proident ullamco consequat deserunt\",\n   \"name\": \"voluptate pariatur in elit nostrud\",\n   \"revision\": 24652226.31610802,\n   \"created\": \"nostrud consequat dolor ut\",\n   \"updated\": \"pariatur sed in commodo\",\n   \"definitions\": {\n    \"type\": \"array\",\n    \"minItems\": 0,\n    \"uniqueItems\": true,\n    \"maxItems\": 2,\n    \"items\": {\n     \"type\": \"object\",\n     \"properties\": {\n      \"delta\": {\n       \"type\": \"number\",\n       \"description\": \"Minimal time delay before new state creation.\",\n       \"default\": \"<number>\"\n      },\n      \"attributes\": {\n       \"type\": \"array\",\n       \"minItems\": 0,\n       \"uniqueItems\": true,\n       \"maxItems\": 2,\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"name\": {\n          \"type\": \"string\",\n          \"description\": \"Name of the attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"channel\": {\n          \"type\": \"string\",\n          \"description\": \"Mainflux channel used by attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"subtopic\": {\n          \"type\": \"string\",\n          \"description\": \"Subtopic used by attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"persist_state\": {\n          \"type\": \"boolean\",\n          \"description\": \"Trigger state creation based on the attribute.\",\n          \"default\": \"<boolean>\"\n         }\n        }\n       }\n      }\n     }\n    }\n   },\n   \"metadata\": \"irure adipisic\"\n  },\n  {\n   \"owner\": \"fugiat ipsum sed Lorem\",\n   \"id\": \"aliqua incididunt Lorem pariatur\",\n   \"name\": \"amet velit\",\n   \"revision\": 17709219.741834074,\n   \"created\": \"officia et culpa exercitation\",\n   \"updated\": \"velit commodo amet\",\n   \"definitions\": {\n    \"type\": \"array\",\n    \"minItems\": 0,\n    \"uniqueItems\": true,\n    \"maxItems\": 2,\n    \"items\": {\n     \"type\": \"object\",\n     \"properties\": {\n      \"delta\": {\n       \"type\": \"number\",\n       \"description\": \"Minimal time delay before new state creation.\",\n       \"default\": \"<number>\"\n      },\n      \"attributes\": {\n       \"type\": \"array\",\n       \"minItems\": 0,\n       \"uniqueItems\": true,\n       \"maxItems\": 2,\n       \"items\": {\n        \"type\": \"object\",\n        \"properties\": {\n         \"name\": {\n          \"type\": \"string\",\n          \"description\": \"Name of the attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"channel\": {\n          \"type\": \"string\",\n          \"description\": \"Mainflux channel used by attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"subtopic\": {\n          \"type\": \"string\",\n          \"description\": \"Subtopic used by attribute.\",\n          \"default\": \"<string>\"\n         },\n         \"persist_state\": {\n          \"type\": \"boolean\",\n          \"description\": \"Trigger state creation based on the attribute.\",\n          \"default\": \"<boolean>\"\n         }\n        }\n       }\n      }\n     }\n    }\n   },\n   \"metadata\": \"magna laboris incididunt ipsum\"\n  }\n ],\n \"total\": -80014606,\n \"offset\": 89298346,\n \"limit\": -68926609\n}"
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins?limit=10&offset=0&name=<string>&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins?limit=10&offset=0&name=<string>&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins?limit=10&offset=0&name=<string>&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "name",
+											"value": "<string>"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves twin info",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/twins/:twinID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"twins",
+								":twinID"
+							],
+							"variable": [
+								{
+									"key": "twinID",
+									"value": "{{twinID}}",
+									"description": "(Required) Unique twin identifier."
+								}
+							]
+						}
+					},
+					"response": [
+						{
+							"name": "Failed due to malformed twin's ID.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"owner\": \"proident esse ullamco\",\n \"id\": \"laborum fugiat nulla\",\n \"name\": \"incididunt voluptate Duis\",\n \"revision\": -27858056.65014869,\n \"created\": \"Ut\",\n \"updated\": \"ut cupidatat fugiat in\",\n \"definitions\": {\n  \"type\": \"array\",\n  \"minItems\": 0,\n  \"uniqueItems\": true,\n  \"maxItems\": 2,\n  \"items\": {\n   \"type\": \"object\",\n   \"properties\": {\n    \"delta\": {\n     \"type\": \"number\",\n     \"description\": \"Minimal time delay before new state creation.\",\n     \"default\": \"<number>\"\n    },\n    \"attributes\": {\n     \"type\": \"array\",\n     \"minItems\": 0,\n     \"uniqueItems\": true,\n     \"maxItems\": 2,\n     \"items\": {\n      \"type\": \"object\",\n      \"properties\": {\n       \"name\": {\n        \"type\": \"string\",\n        \"description\": \"Name of the attribute.\",\n        \"default\": \"<string>\"\n       },\n       \"channel\": {\n        \"type\": \"string\",\n        \"description\": \"Mainflux channel used by attribute.\",\n        \"default\": \"<string>\"\n       },\n       \"subtopic\": {\n        \"type\": \"string\",\n        \"description\": \"Subtopic used by attribute.\",\n        \"default\": \"<string>\"\n       },\n       \"persist_state\": {\n        \"type\": \"boolean\",\n        \"description\": \"Trigger state creation based on the attribute.\",\n        \"default\": \"<boolean>\"\n       }\n      }\n     }\n    }\n   }\n  }\n },\n \"metadata\": \"aute occaecat cillum eu\"\n}"
+						},
+						{
+							"name": "Twin does not exist.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Removes a twin",
+					"request": {
+						"method": "DELETE",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/twins/:twinID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"twins",
+								":twinID"
+							],
+							"variable": [
+								{
+									"key": "twinID",
+									"value": "{{twinID}}",
+									"description": "(Required) Unique twin identifier."
+								}
+							]
+						},
+						"description": "Removes a twin."
+					},
+					"response": [
+						{
+							"name": "Twin removed.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "No Content",
+							"code": 204,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Twin does not exist.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed twin's ID.",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided",
+							"originalRequest": {
+								"method": "DELETE",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Updates twin info",
+					"request": {
+						"method": "PUT",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"<string>\",\n    \"metadata\": \"<object>\",\n    \"definition\": {\n        \"delta\": \"<number>\",\n        \"attributes\": [\n            {\n                \"name\": \"<string>\",\n                \"channel\": \"<string>\",\n                \"subtopic\": \"<string>\",\n                \"persist_state\": \"<boolean>\"\n            }\n        ]\n    }\n}"
+						},
+						"url": {
+							"raw": "{{baseUrl}}/twins/:twinID",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"twins",
+								":twinID"
+							],
+							"variable": [
+								{
+									"key": "twinID",
+									"value": "{{twinID}}",
+									"description": "(Required) Unique twin identifier."
+								}
+							]
+						},
+						"description": "Update is performed by replacing the current resource data with values\nprovided in a request payload. Note that the twin's ID cannot be changed.\n"
+					},
+					"response": [
+						{
+							"name": "Twin updated.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed twin's ID or malformed JSON.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Twin does not exist.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid content type.",
+							"originalRequest": {
+								"method": "PUT",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/twins/:twinID",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"twins",
+										":twinID"
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Unsupported Media Type",
+							"code": 415,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				},
+				{
+					"name": "Retrieves states",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"description": "(Required) User's access token.",
+								"key": "Authorization",
+								"value": "{{userToken}}"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"states",
+								":twinID"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve."
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"description": "Number of items to skip during retrieval."
+								}
+							],
+							"variable": [
+								{
+									"description": "(Required) Unique twin identifier.",
+									"key": "twinID",
+									"value": "{{twinID}}"
+								}
+							]
+						},
+						"description": "Retrieves a list of states. Due to performance concerns, data\nis retrieved in subsets.\n"
+					},
+					"response": [
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"states",
+										":twinID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"twins\": [\n  {\n   \"twin_id\": \"nulla ullamco\",\n   \"id\": -21756450.286201328,\n   \"created\": \"adipisicing reprehe\",\n   \"payload\": \"Lorem Ut\"\n  },\n  {\n   \"twin_id\": \"sunt\",\n   \"id\": 71115490.36230981,\n   \"created\": \"Ut nostrud Excepte\",\n   \"payload\": \"eiusmod consectetur Excepteur\"\n  }\n ],\n \"total\": 3465080,\n \"offset\": 71435562,\n \"limit\": -4200906\n}"
+						},
+						{
+							"name": "Twin does not exist.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"states",
+										":twinID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Not Found",
+							"code": 404,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"states",
+										":twinID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"states",
+										":twinID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) User's access token.",
+										"key": "Authorization",
+										"value": "<string>"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/states/:twinID?limit=10&offset=0&metadata=<string>",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"states",
+										":twinID"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "metadata",
+											"value": "<string>"
+										}
+									],
+									"variable": [
+										{
+											"key": "twinID"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		}
+	]
+}
