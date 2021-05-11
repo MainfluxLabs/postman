@@ -20,7 +20,7 @@
 						],
 						"body": {
 							"mode": "raw",
-							"raw": "{\n    \"email\": \"<email>\",\n    \"password\": \"<password>\"\n}"
+							"raw": "{\n    \"email\": \"\",\n    \"password\": \"\"\n}"
 						},
 						"url": {
 							"raw": "{{baseUrl}}/tokens",
@@ -1026,7 +1026,8 @@
 							"variable": [
 								{
 									"key": "thingId",
-									"value": "{{thingID}}"
+									"value": "{{thingID}}",
+									"type": "string"
 								}
 							]
 						}
@@ -1261,6 +1262,7 @@
 								{
 									"key": "thingId",
 									"value": "{{thingID}}",
+									"type": "string",
 									"description": "(Required) Unique thing identifier."
 								}
 							]
@@ -2306,6 +2308,7 @@
 								{
 									"key": "chanId",
 									"value": "{{chanID}}",
+									"type": "string",
 									"description": "(Required) Unique channel identifier."
 								}
 							]
@@ -2580,6 +2583,7 @@
 								{
 									"key": "chanId",
 									"value": "{{chanID}}",
+									"type": "string",
 									"description": "(Required) Unique channel identifier."
 								}
 							]
@@ -2847,6 +2851,7 @@
 								{
 									"key": "chanId",
 									"value": "{{chanID}}",
+									"type": "string",
 									"description": "(Required) Unique channel identifier."
 								}
 							]
@@ -3059,6 +3064,7 @@
 								{
 									"key": "thingId",
 									"value": "{{thingID}}",
+									"type": "string",
 									"description": "(Required) Unique thing identifier."
 								}
 							]
@@ -3396,9 +3402,10 @@
 							],
 							"variable": [
 								{
-									"description": "(Required) Unique channel identifier.",
 									"key": "chanId",
-									"value": "{{chanID}}"
+									"value": "{{chanID}}",
+									"type": "string",
+									"description": "(Required) Unique channel identifier."
 								}
 							]
 						},
@@ -3990,11 +3997,13 @@
 								{
 									"key": "chanId",
 									"value": "{{chanConID}}",
+									"type": "string",
 									"description": "(Required) Unique channel identifier."
 								},
 								{
 									"key": "thingId",
 									"value": "{{thingConID}}",
+									"type": "string",
 									"description": "(Required) Unique thing identifier."
 								}
 							]
@@ -4250,11 +4259,13 @@
 								{
 									"key": "chanId",
 									"value": "{{chanConID}}",
+									"type": "string",
 									"description": "(Required) Unique channel identifier."
 								},
 								{
 									"key": "thingId",
 									"value": "{{thingConID}}",
+									"type": "string",
 									"description": "(Required) Unique thing identifier."
 								}
 							]
@@ -4969,6 +4980,7 @@
 								{
 									"key": "twinID",
 									"value": "{{twinID}}",
+									"type": "string",
 									"description": "(Required) Unique twin identifier."
 								}
 							]
@@ -5196,6 +5208,7 @@
 								{
 									"key": "twinID",
 									"value": "{{twinID}}",
+									"type": "string",
 									"description": "(Required) Unique twin identifier."
 								}
 							]
@@ -5432,6 +5445,7 @@
 								{
 									"key": "twinID",
 									"value": "{{twinID}}",
+									"type": "string",
 									"description": "(Required) Unique twin identifier."
 								}
 							]
@@ -5709,9 +5723,10 @@
 							],
 							"variable": [
 								{
-									"description": "(Required) Unique twin identifier.",
 									"key": "twinID",
-									"value": "{{twinID}}"
+									"value": "{{twinID}}",
+									"type": "string",
+									"description": "(Required) Unique twin identifier."
 								}
 							]
 						},
@@ -5973,6 +5988,428 @@
 							},
 							"status": "Bad Request",
 							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						}
+					]
+				}
+			]
+		},
+		{
+			"name": "Reader",
+			"item": [
+				{
+					"name": "Retrieves messages sent to single channel",
+					"request": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Authorization",
+								"value": "{{thingKey}}",
+								"type": "text"
+							}
+						],
+						"url": {
+							"raw": "{{baseUrl}}/reader/channels/:chanID/messages",
+							"host": [
+								"{{baseUrl}}"
+							],
+							"path": [
+								"reader",
+								"channels",
+								":chanID",
+								"messages"
+							],
+							"query": [
+								{
+									"key": "limit",
+									"value": "10",
+									"description": "Size of the subset to retrieve.",
+									"disabled": true
+								},
+								{
+									"key": "name",
+									"value": "Duis_amet",
+									"description": "SenML message name.",
+									"disabled": true
+								},
+								{
+									"key": "v",
+									"value": "Duis_amet",
+									"description": "SenML message value.",
+									"disabled": true
+								},
+								{
+									"key": "vb",
+									"value": "false",
+									"description": "SenML message bool value.",
+									"disabled": true
+								},
+								{
+									"key": "vs",
+									"value": "Duis_amet",
+									"description": "SenML message string value.",
+									"disabled": true
+								},
+								{
+									"key": "vd",
+									"value": "Duis_amet",
+									"description": "SenML message data value.",
+									"disabled": true
+								},
+								{
+									"key": "from",
+									"value": "60378122.56120083",
+									"description": "SenML message time in nanoseconds (integer part represents seconds).",
+									"disabled": true
+								},
+								{
+									"key": "to",
+									"value": "60378122.56120083",
+									"description": "SenML message time in nanoseconds (integer part represents seconds).",
+									"disabled": true
+								},
+								{
+									"key": "offset",
+									"value": "0",
+									"disabled": true
+								}
+							],
+							"variable": [
+								{
+									"key": "chanID",
+									"value": "{{chanID}}"
+								}
+							]
+						},
+						"description": "Retrieves a list of messages sent to specific channel. Due to\nperformance concerns, data is retrieved in subsets. The API readers must\nensure that the entire dataset is consumed either by making subsequent\nrequests, or by increasing the subset size of the initial request.\n"
+					},
+					"response": [
+						{
+							"name": "Data retrieved.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Thing access token.",
+										"key": "Authorization",
+										"value": "Duis amet"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/messages?limit=10&offset=0&Publisher=urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25&name=Duis amet&v=Duis amet&vb=true&vs=Duis amet&vd=Duis amet&from=60378122.56120083&to=60378122.56120083",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "Publisher",
+											"value": "urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25"
+										},
+										{
+											"key": "name",
+											"value": "Duis amet"
+										},
+										{
+											"key": "v",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vb",
+											"value": "true"
+										},
+										{
+											"key": "vs",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vd",
+											"value": "Duis amet"
+										},
+										{
+											"key": "from",
+											"value": "60378122.56120083"
+										},
+										{
+											"key": "to",
+											"value": "60378122.56120083"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "OK",
+							"code": 200,
+							"_postman_previewlanguage": "json",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "application/json"
+								}
+							],
+							"cookie": [],
+							"body": "{\n \"total\": 66387970.92733398,\n \"offset\": -51181427.606588416,\n \"limit\": -52445132.68308357,\n \"messages\": [\n  {\n   \"channel\": 5396197,\n   \"publisher\": -47378427,\n   \"protocol\": \"irure nulla pariatur enim in\",\n   \"name\": \"adipisicing nisi id ut\",\n   \"unit\": \"eiusmod nisi Lorem\",\n   \"value\": 15736552.172795951,\n   \"stringValue\": \"Excepteur aliquip magna\",\n   \"boolValue\": false,\n   \"dataValue\": \"minim id ut enim\",\n   \"valueSum\": -97751926.04488696,\n   \"time\": -16419072.309087917,\n   \"updateTime\": -53668003.363303505\n  },\n  {\n   \"channel\": -16378626,\n   \"publisher\": 28102983,\n   \"protocol\": \"nostrud non\",\n   \"name\": \"in pariatur\",\n   \"unit\": \"in dolor\",\n   \"value\": 34739596.220131874,\n   \"stringValue\": \"exercitation deserunt\",\n   \"boolValue\": true,\n   \"dataValue\": \"incididunt reprehenderit voluptate cillum\",\n   \"valueSum\": -44693477.177919224,\n   \"time\": 52879516.83130953,\n   \"updateTime\": -93767697.6926463\n  }\n ]\n}"
+						},
+						{
+							"name": "Failed due to malformed query parameters.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Thing access token.",
+										"key": "Authorization",
+										"value": "Duis amet"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/messages?limit=10&offset=0&Publisher=urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25&name=Duis amet&v=Duis amet&vb=true&vs=Duis amet&vd=Duis amet&from=60378122.56120083&to=60378122.56120083",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "Publisher",
+											"value": "urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25"
+										},
+										{
+											"key": "name",
+											"value": "Duis amet"
+										},
+										{
+											"key": "v",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vb",
+											"value": "true"
+										},
+										{
+											"key": "vs",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vd",
+											"value": "Duis amet"
+										},
+										{
+											"key": "from",
+											"value": "60378122.56120083"
+										},
+										{
+											"key": "to",
+											"value": "60378122.56120083"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Bad Request",
+							"code": 400,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Missing or invalid access token provided.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Thing access token.",
+										"key": "Authorization",
+										"value": "Duis amet"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/messages?limit=10&offset=0&Publisher=urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25&name=Duis amet&v=Duis amet&vb=true&vs=Duis amet&vd=Duis amet&from=60378122.56120083&to=60378122.56120083",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "Publisher",
+											"value": "urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25"
+										},
+										{
+											"key": "name",
+											"value": "Duis amet"
+										},
+										{
+											"key": "v",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vb",
+											"value": "true"
+										},
+										{
+											"key": "vs",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vd",
+											"value": "Duis amet"
+										},
+										{
+											"key": "from",
+											"value": "60378122.56120083"
+										},
+										{
+											"key": "to",
+											"value": "60378122.56120083"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Forbidden",
+							"code": 403,
+							"_postman_previewlanguage": "text",
+							"header": [
+								{
+									"key": "Content-Type",
+									"value": "text/plain"
+								}
+							],
+							"cookie": [],
+							"body": ""
+						},
+						{
+							"name": "Unexpected server-side error occurred.",
+							"originalRequest": {
+								"method": "GET",
+								"header": [
+									{
+										"description": "(Required) Thing access token.",
+										"key": "Authorization",
+										"value": "Duis amet"
+									}
+								],
+								"url": {
+									"raw": "{{baseUrl}}/channels/:chanId/messages?limit=10&offset=0&Publisher=urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25&name=Duis amet&v=Duis amet&vb=true&vs=Duis amet&vd=Duis amet&from=60378122.56120083&to=60378122.56120083",
+									"host": [
+										"{{baseUrl}}"
+									],
+									"path": [
+										"channels",
+										":chanId",
+										"messages"
+									],
+									"query": [
+										{
+											"key": "limit",
+											"value": "10"
+										},
+										{
+											"key": "offset",
+											"value": "0"
+										},
+										{
+											"key": "Publisher",
+											"value": "urn:uuid:3c5f4592-79c0-9e94-dbc7-398a0a725d25"
+										},
+										{
+											"key": "name",
+											"value": "Duis amet"
+										},
+										{
+											"key": "v",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vb",
+											"value": "true"
+										},
+										{
+											"key": "vs",
+											"value": "Duis amet"
+										},
+										{
+											"key": "vd",
+											"value": "Duis amet"
+										},
+										{
+											"key": "from",
+											"value": "60378122.56120083"
+										},
+										{
+											"key": "to",
+											"value": "60378122.56120083"
+										}
+									],
+									"variable": [
+										{
+											"key": "chanId"
+										}
+									]
+								}
+							},
+							"status": "Internal Server Error",
+							"code": 500,
 							"_postman_previewlanguage": "text",
 							"header": [
 								{
